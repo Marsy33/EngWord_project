@@ -16,6 +16,11 @@
   font-size: 5vh;
   font-weight: bold;
 }
+
+.imgMagical {
+  width: 40vw;
+}
+
 /* footer */
 .footerName {
   color: rgb(248, 248, 248);
