@@ -12,6 +12,7 @@ class Card extends React.Component {
 
     this.state = {
       number1: 0,
+      word: 0,
     };
   }
 
@@ -25,14 +26,23 @@ class Card extends React.Component {
       number1: this.state.number1 + 1,
     });
   };
+  addWord = () => {
+    this.setState({
+      word: this.state.word + 1,
+    });
+  };
   render() {
     if (this.state.number1 === data.length) {
       return <img className="imgMagical" src={Magical} />;
     } else {
       return (
         <div>
-          <OnlyCard {...data[this.state.number1]} />
-
+          <div>Words learned: {this.state.word}</div>
+          <OnlyCard
+            key={data[this.state.number1].id}
+            {...data[this.state.number1]}
+            addWord={this.addWord}
+          />
           <div>
             {this.state.number1 === 0 ? null : (
               <Button variant="dark" onClick={this.back}>

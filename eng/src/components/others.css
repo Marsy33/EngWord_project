@@ -27,3 +27,9 @@
   margin-right: 3vw;
   font-size: 4vh;
 }
+
+/*OnlyCard*/
+
+.selected {
+  border-color: chartreuse;
+}
