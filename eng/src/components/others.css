@@ -33,3 +33,9 @@
 .selected {
   border-color: chartreuse;
 }
+
+/*Word*/
+
+.errorValue {
+  border-color: red;
+}

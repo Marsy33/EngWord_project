@@ -1,6 +1,7 @@
 import React from "react";
 import data from "./data.jsx";
 import { Table, ButtonGroup, Button } from "react-bootstrap";
+import "./others.css";
 
 export default class Word extends React.Component {
   constructor(props) {
@@ -31,7 +32,7 @@ export default class Word extends React.Component {
 
   onChangeEnglish = (evt) => {
     this.setState({
-      english: evt.target.value,
+      english: evt.target.value.replace(/[^a-z\s]/gi, ""),
       transcription: this.state.transcription,
       russian: this.state.russian,
     });
@@ -47,7 +48,7 @@ export default class Word extends React.Component {
     this.setState({
       english: this.state.english,
       transcription: this.state.transcription,
-      russian: evt.target.value,
+      russian: evt.target.value.replace(/[^а-яё\s]/gi, ""),
     });
   };
   onSave = () => {
@@ -58,28 +59,141 @@ export default class Word extends React.Component {
 
   render() {
     const { id, english, transcription, russian } = this.props;
-    if (this.state.visibility) {
+    if (this.state.english == "") {
       return (
         <tr key={id}>
           <td>
-            <input value={this.state.english} onChange={this.onChangeEnglish} />
+            <input
+              className={this.state.english == "" ? "errorValue" : ""}
+              value={this.state.english}
+              onChange={this.onChangeEnglish}
+            />
           </td>
           <td>
             {" "}
             <input
+              className={this.state.transcription == "" ? "errorValue" : ""}
               value={this.state.transcription}
               onChange={this.onChangeTrunscription}
             />
           </td>
           <td>
-            <input value={this.state.russian} onChange={this.onChangeRussian} />
+            <input
+              className={this.state.russian == "" ? "errorValue" : ""}
+              value={this.state.russian}
+              onChange={this.onChangeRussian}
+            />
           </td>
           <td>
             <ButtonGroup aria-label="Basic example">
               <Button variant="secondary" onClick={this.onCancel}>
                 Cancel
               </Button>
-
+            </ButtonGroup>
+          </td>
+        </tr>
+      );
+    }
+    if (this.state.transcription == "") {
+      return (
+        <tr key={id}>
+          <td>
+            <input
+              className={this.state.english == "" ? "errorValue" : ""}
+              value={this.state.english}
+              onChange={this.onChangeEnglish}
+            />
+          </td>
+          <td>
+            {" "}
+            <input
+              className={this.state.transcription == "" ? "errorValue" : ""}
+              value={this.state.transcription}
+              onChange={this.onChangeTrunscription}
+            />
+          </td>
+          <td>
+            <input
+              className={this.state.russian == "" ? "errorValue" : ""}
+              value={this.state.russian}
+              onChange={this.onChangeRussian}
+            />
+          </td>
+          <td>
+            <ButtonGroup aria-label="Basic example">
+              <Button variant="secondary" onClick={this.onCancel}>
+                Cancel
+              </Button>
+            </ButtonGroup>
+          </td>
+        </tr>
+      );
+    }
+    if (this.state.russian == "") {
+      return (
+        <tr key={id}>
+          <td>
+            <input
+              className={this.state.english == "" ? "errorValue" : ""}
+              value={this.state.english}
+              onChange={this.onChangeEnglish}
+            />
+          </td>
+          <td>
+            {" "}
+            <input
+              className={this.state.transcription == "" ? "errorValue" : ""}
+              value={this.state.transcription}
+              onChange={this.onChangeTrunscription}
+            />
+          </td>
+          <td>
+            <input
+              className={this.state.russian == "" ? "errorValue" : ""}
+              value={this.state.russian}
+              onChange={this.onChangeRussian}
+            />
+          </td>
+          <td>
+            <ButtonGroup aria-label="Basic example">
+              <Button variant="secondary" onClick={this.onCancel}>
+                Cancel
+              </Button>
+            </ButtonGroup>
+          </td>
+        </tr>
+      );
+    }
+    if (this.state.visibility) {
+      return (
+        <tr key={id}>
+          <td>
+            <input
+              className={this.state.english == "" ? "errorValue" : ""}
+              value={this.state.english}
+              onChange={this.onChangeEnglish}
+            />
+          </td>
+          <td>
+            {" "}
+            <input
+              className={this.state.transcription == "" ? "errorValue" : ""}
+              value={this.state.transcription}
+              onChange={this.onChangeTrunscription}
+            />
+          </td>
+          <td>
+            <input
+              className={this.state.russian == "" ? "errorValue" : ""}
+              value={this.state.russian}
+              onChange={this.onChangeRussian}
+            />
+          </td>
+          <td>
+            <ButtonGroup aria-label="Basic example">
+              <Button variant="secondary" onClick={this.onCancel}>
+                Cancel
+              </Button>
               <Button variant="secondary" onClick={this.onSave}>
                 Save
               </Button>

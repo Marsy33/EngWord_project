@@ -6,3 +6,7 @@
 
 ![](gif/31week.gif)
 
+![](gif/inputError.gif)
+
+
+
